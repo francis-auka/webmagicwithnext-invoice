@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Deep blue + green professional palette for webmagicwithnext */
+    --background: 210 20% 98%;
+    --foreground: 213 37% 16%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 213 37% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 37% 16%;
+
+    --primary: 213 60% 16%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 25% 95%;
+    --secondary-foreground: 213 37% 16%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 213 15% 45%;
+
+    --accent: 73 67% 46%;
+    --accent-foreground: 213 60% 16%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 213 60% 16%;
+
+    --radius: 0.625rem;
+
+    /* Custom tokens */
+    --navy: 213 60% 16%;
+    --navy-light: 213 45% 25%;
+    --lime: 73 67% 46%;
+    --lime-light: 73 67% 92%;
+    --cyan: 193 80% 50%;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(213 37% 16% / 0.04);
+    --shadow-md: 0 4px 6px -1px hsl(213 37% 16% / 0.06), 0 2px 4px -2px hsl(213 37% 16% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(213 37% 16% / 0.08), 0 4px 6px -4px hsl(213 37% 16% / 0.08);
+    --shadow-xl: 0 20px 25px -5px hsl(213 37% 16% / 0.1), 0 8px 10px -6px hsl(213 37% 16% / 0.1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 213 37% 10%;
+    --foreground: 210 20% 98%;
+
+    --card: 213 35% 14%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 213 35% 14%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 73 67% 46%;
+    --primary-foreground: 213 60% 16%;
+
+    --secondary: 213 30% 20%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 213 30% 20%;
+    --muted-foreground: 213 15% 60%;
+
+    --accent: 73 67% 46%;
+    --accent-foreground: 213 60% 16%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 213 25% 22%;
+    --input: 213 25% 22%;
+    --ring: 73 67% 46%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .shadow-card {
+    box-shadow: var(--shadow-md);
+  }
+
+  .shadow-card-hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-xl);
+  }
+
+  .invoice-print {
+    @apply bg-card text-card-foreground;
+  }
+}
+
+/* Print styles for invoice */
+@media print {
+  body {
+    background: white !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .invoice-preview {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
