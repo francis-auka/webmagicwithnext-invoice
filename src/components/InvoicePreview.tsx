@@ -120,6 +120,31 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice }) => {
         </div>
       </div>
 
+      {/* Payment Information */}
+      <div className="mb-8 bg-muted/30 p-6 rounded-xl border border-border">
+        <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4">Payment Information</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <p className="text-xs text-muted-foreground uppercase font-semibold">Equity Bank Paybill</p>
+            <div className="text-sm">
+              <p className="font-bold text-foreground">Account: 1170184512866</p>
+              <p className="text-muted-foreground">Name: Francis Auka</p>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <p className="text-xs text-muted-foreground uppercase font-semibold">Mpesa Number</p>
+            <div className="text-sm">
+              <p className="font-bold text-foreground">Number: 0795544180</p>
+              <p className="text-muted-foreground">Name: Francis Auka</p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-6 pt-4 border-t border-border/50 flex justify-between items-center">
+          <span className="text-sm font-medium text-muted-foreground">Total Amount Due:</span>
+          <span className="text-2xl font-bold text-primary">{formatCurrency(total, invoice.currency)}</span>
+        </div>
+      </div>
+
       {/* Notes */}
       {invoice.notes && (
         <div className="mt-auto pt-6 border-t border-border">

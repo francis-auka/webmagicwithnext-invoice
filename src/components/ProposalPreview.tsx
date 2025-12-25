@@ -8,8 +8,6 @@ interface ProposalPreviewProps {
 }
 
 export const ProposalPreview: React.FC<ProposalPreviewProps> = ({ proposal }) => {
-    const totalCost = proposal.costItems.reduce((sum, item) => sum + item.amount, 0);
-
     return (
         <div
             id="proposal-preview"
@@ -52,6 +50,14 @@ export const ProposalPreview: React.FC<ProposalPreviewProps> = ({ proposal }) =>
                 </div>
             </div>
 
+            {/* Project Overview */}
+            {proposal.projectOverview && (
+                <div className="mb-8">
+                    <h2 className="text-lg font-bold text-primary mb-4 border-b border-border pb-2">Project Overview</h2>
+                    <p className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">{proposal.projectOverview}</p>
+                </div>
+            )}
+
             {/* Scope of Work */}
             <div className="mb-8">
                 <h2 className="text-lg font-bold text-primary mb-4 border-b border-border pb-2">Scope of Work</h2>
@@ -69,40 +75,29 @@ export const ProposalPreview: React.FC<ProposalPreviewProps> = ({ proposal }) =>
                 </div>
             </div>
 
+            {/* Excluded Work */}
+            {proposal.excludedWork && (
+                <div className="mb-8">
+                    <h2 className="text-lg font-bold text-primary mb-4 border-b border-border pb-2">Excluded Work</h2>
+                    <p className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">{proposal.excludedWork}</p>
+                </div>
+            )}
+
             {/* Timeline */}
             {proposal.timeline && (
                 <div className="mb-8">
                     <h2 className="text-lg font-bold text-primary mb-4 border-b border-border pb-2">Timeline</h2>
-                    <p className="text-sm text-muted-foreground whitespace-pre-line">{proposal.timeline}</p>
+                    <p className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">{proposal.timeline}</p>
                 </div>
             )}
 
-            {/* Cost Summary */}
-            <div className="mb-8">
-                <h2 className="text-lg font-bold text-primary mb-4 border-b border-border pb-2">Cost Summary</h2>
-                <div className="border border-border rounded-lg overflow-hidden">
-                    <div className="bg-muted/50 px-6 py-3 border-b border-border">
-                        <div className="flex justify-between text-xs font-semibold uppercase tracking-wide">
-                            <span>Description</span>
-                            <span>Amount</span>
-                        </div>
-                    </div>
-                    <div className="divide-y divide-border">
-                        {proposal.costItems.map((item) => (
-                            <div key={item.id} className="flex justify-between px-6 py-4 text-sm">
-                                <span className="text-foreground">{item.description || 'Service'}</span>
-                                <span className="font-medium">{formatCurrency(item.amount, proposal.currency)}</span>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="bg-primary/5 px-6 py-4 border-t border-border">
-                        <div className="flex justify-between items-center">
-                            <span className="font-bold text-foreground">Total Estimated Cost</span>
-                            <span className="text-xl font-bold text-primary">{formatCurrency(totalCost, proposal.currency)}</span>
-                        </div>
-                    </div>
+            {/* General Requirements */}
+            {proposal.generalRequirements && (
+                <div className="mb-8">
+                    <h2 className="text-lg font-bold text-primary mb-4 border-b border-border pb-2">General Requirements</h2>
+                    <p className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">{proposal.generalRequirements}</p>
                 </div>
-            </div>
+            )}
 
             {/* Notes */}
             {proposal.notes && (
@@ -115,7 +110,7 @@ export const ProposalPreview: React.FC<ProposalPreviewProps> = ({ proposal }) =>
             {/* Footer */}
             <div className="mt-8 pt-4 border-t border-border text-center">
                 <p className="text-xs text-muted-foreground">
-                    This proposal is valid until {formatDate(proposal.validUntil)}. • webmagicwithnext.com
+                    Thank you for considering our proposal! • webmagicwithnext.com
                 </p>
             </div>
         </div>

@@ -80,6 +80,30 @@ export const ContractPreview: React.FC<ContractPreviewProps> = ({ contract }) =>
                 </div>
             </div>
 
+            {/* Ownership & IP */}
+            <div className="mb-8">
+                <h2 className="text-lg font-bold text-primary mb-4 border-b border-border pb-2">4. Ownership & Intellectual Property</h2>
+                <p className="text-sm text-foreground whitespace-pre-line leading-relaxed">
+                    {contract.ownershipIP || 'Ownership terms...'}
+                </p>
+            </div>
+
+            {/* Termination */}
+            <div className="mb-8">
+                <h2 className="text-lg font-bold text-primary mb-4 border-b border-border pb-2">5. Termination</h2>
+                <p className="text-sm text-foreground whitespace-pre-line leading-relaxed">
+                    {contract.termination || 'Termination terms...'}
+                </p>
+            </div>
+
+            {/* Governing Law */}
+            <div className="mb-8">
+                <h2 className="text-lg font-bold text-primary mb-4 border-b border-border pb-2">6. Governing Law</h2>
+                <p className="text-sm text-foreground whitespace-pre-line leading-relaxed">
+                    {contract.governingLaw || 'Governing law terms...'}
+                </p>
+            </div>
+
             {/* Signatures */}
             <div className="mt-12 pt-12 border-t border-border">
                 <div className="grid grid-cols-2 gap-12">

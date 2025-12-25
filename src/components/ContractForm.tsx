@@ -244,8 +244,53 @@ export const ContractForm: React.FC<ContractFormProps> = ({ contract, onChange }
                 </CardContent>
             </Card>
 
-            {/* Notes */}
+            {/* Ownership & Intellectual Property */}
+            <Card className="shadow-card animate-fade-in" style={{ animationDelay: '200ms' }}>
+                <CardHeader className="pb-4">
+                    <CardTitle className="text-lg font-semibold text-foreground">Ownership & Intellectual Property</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Textarea
+                        placeholder="Ownership terms..."
+                        value={contract.ownershipIP}
+                        onChange={(e) => onChange({ ...contract, ownershipIP: e.target.value })}
+                        rows={4}
+                    />
+                </CardContent>
+            </Card>
+
+            {/* Termination */}
             <Card className="shadow-card animate-fade-in" style={{ animationDelay: '250ms' }}>
+                <CardHeader className="pb-4">
+                    <CardTitle className="text-lg font-semibold text-foreground">Termination</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Textarea
+                        placeholder="Termination terms..."
+                        value={contract.termination}
+                        onChange={(e) => onChange({ ...contract, termination: e.target.value })}
+                        rows={4}
+                    />
+                </CardContent>
+            </Card>
+
+            {/* Governing Law */}
+            <Card className="shadow-card animate-fade-in" style={{ animationDelay: '300ms' }}>
+                <CardHeader className="pb-4">
+                    <CardTitle className="text-lg font-semibold text-foreground">Governing Law</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Textarea
+                        placeholder="Governing law terms..."
+                        value={contract.governingLaw}
+                        onChange={(e) => onChange({ ...contract, governingLaw: e.target.value })}
+                        rows={2}
+                    />
+                </CardContent>
+            </Card>
+
+            {/* Notes */}
+            <Card className="shadow-card animate-fade-in" style={{ animationDelay: '350ms' }}>
                 <CardHeader className="pb-4">
                     <CardTitle className="text-lg font-semibold text-foreground">Additional Notes</CardTitle>
                 </CardHeader>

@@ -10,7 +10,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { CalendarIcon, Plus, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
-import { ProposalData, ProposalScopeItem, ProposalCostItem } from '@/types/proposal';
+import { ProposalData, ProposalScopeItem } from '@/types/proposal';
 
 interface ProposalFormProps {
     proposal: ProposalData;
@@ -56,34 +56,6 @@ export const ProposalForm: React.FC<ProposalFormProps> = ({ proposal, onChange }
             onChange({
                 ...proposal,
                 scopeItems: proposal.scopeItems.filter((item) => item.id !== id),
-            });
-        }
-    };
-
-    const updateCostItem = (id: string, field: keyof ProposalCostItem, value: string | number) => {
-        onChange({
-            ...proposal,
-            costItems: proposal.costItems.map((item) =>
-                item.id === id ? { ...item, [field]: value } : item
-            ),
-        });
-    };
-
-    const addCostItem = () => {
-        onChange({
-            ...proposal,
-            costItems: [
-                ...proposal.costItems,
-                { id: crypto.randomUUID(), description: '', amount: 0 },
-            ],
-        });
-    };
-
-    const removeCostItem = (id: string) => {
-        if (proposal.costItems.length > 1) {
-            onChange({
-                ...proposal,
-                costItems: proposal.costItems.filter((item) => item.id !== id),
             });
         }
     };
@@ -241,8 +213,23 @@ export const ProposalForm: React.FC<ProposalFormProps> = ({ proposal, onChange }
                 </CardContent>
             </Card>
 
-            {/* Scope of Work */}
+            {/* Project Overview */}
             <Card className="shadow-card animate-fade-in" style={{ animationDelay: '100ms' }}>
+                <CardHeader className="pb-4">
+                    <CardTitle className="text-lg font-semibold text-foreground">Project Overview</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Textarea
+                        placeholder="Briefly describe the project and its objectives..."
+                        value={proposal.projectOverview}
+                        onChange={(e) => onChange({ ...proposal, projectOverview: e.target.value })}
+                        rows={4}
+                    />
+                </CardContent>
+            </Card>
+
+            {/* Scope of Work */}
+            <Card className="shadow-card animate-fade-in" style={{ animationDelay: '150ms' }}>
                 <CardHeader className="pb-4">
                     <CardTitle className="text-lg font-semibold text-foreground">Scope of Work</CardTitle>
                 </CardHeader>
@@ -293,8 +280,23 @@ export const ProposalForm: React.FC<ProposalFormProps> = ({ proposal, onChange }
                 </CardContent>
             </Card>
 
+            {/* Excluded Work */}
+            <Card className="shadow-card animate-fade-in" style={{ animationDelay: '200ms' }}>
+                <CardHeader className="pb-4">
+                    <CardTitle className="text-lg font-semibold text-foreground">Excluded Work</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Textarea
+                        placeholder="What is NOT included in this proposal..."
+                        value={proposal.excludedWork}
+                        onChange={(e) => onChange({ ...proposal, excludedWork: e.target.value })}
+                        rows={3}
+                    />
+                </CardContent>
+            </Card>
+
             {/* Timeline */}
-            <Card className="shadow-card animate-fade-in" style={{ animationDelay: '150ms' }}>
+            <Card className="shadow-card animate-fade-in" style={{ animationDelay: '250ms' }}>
                 <CardHeader className="pb-4">
                     <CardTitle className="text-lg font-semibold text-foreground">Timeline</CardTitle>
                 </CardHeader>
@@ -308,62 +310,23 @@ export const ProposalForm: React.FC<ProposalFormProps> = ({ proposal, onChange }
                 </CardContent>
             </Card>
 
-            {/* Cost Summary */}
-            <Card className="shadow-card animate-fade-in" style={{ animationDelay: '200ms' }}>
+            {/* General Requirements */}
+            <Card className="shadow-card animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <CardHeader className="pb-4">
-                    <CardTitle className="text-lg font-semibold text-foreground">Cost Summary</CardTitle>
+                    <CardTitle className="text-lg font-semibold text-foreground">General Requirements</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                    <div className="hidden sm:grid sm:grid-cols-12 gap-4 text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2 px-1">
-                        <div className="col-span-7">Description</div>
-                        <div className="col-span-3 text-right">Amount</div>
-                        <div className="col-span-2"></div>
-                    </div>
-
-                    {proposal.costItems.map((item) => (
-                        <div key={item.id} className="space-y-3 sm:space-y-0 sm:grid sm:grid-cols-12 gap-4 items-center p-3 sm:p-0 bg-muted/30 sm:bg-transparent rounded-lg sm:rounded-none">
-                            <div className="sm:col-span-7 space-y-2">
-                                <Label className="sm:hidden text-xs text-muted-foreground">Description</Label>
-                                <Input
-                                    placeholder="Service or Phase"
-                                    value={item.description}
-                                    onChange={(e) => updateCostItem(item.id, 'description', e.target.value)}
-                                />
-                            </div>
-                            <div className="sm:col-span-3 space-y-2">
-                                <Label className="sm:hidden text-xs text-muted-foreground">Amount</Label>
-                                <Input
-                                    type="number"
-                                    min="0"
-                                    step="0.01"
-                                    value={item.amount}
-                                    onChange={(e) => updateCostItem(item.id, 'amount', parseFloat(e.target.value) || 0)}
-                                    className="text-right"
-                                />
-                            </div>
-                            <div className="sm:col-span-2 flex justify-end">
-                                <Button
-                                    variant="ghost"
-                                    size="icon"
-                                    onClick={() => removeCostItem(item.id)}
-                                    disabled={proposal.costItems.length === 1}
-                                    className="text-muted-foreground hover:text-destructive"
-                                >
-                                    <Trash2 className="h-4 w-4" />
-                                </Button>
-                            </div>
-                        </div>
-                    ))}
-
-                    <Button variant="outline" onClick={addCostItem} className="w-full mt-2">
-                        <Plus className="h-4 w-4 mr-2" />
-                        Add Cost Item
-                    </Button>
+                <CardContent>
+                    <Textarea
+                        placeholder="Client responsibilities, technical requirements, etc..."
+                        value={proposal.generalRequirements}
+                        onChange={(e) => onChange({ ...proposal, generalRequirements: e.target.value })}
+                        rows={4}
+                    />
                 </CardContent>
             </Card>
 
             {/* Notes */}
-            <Card className="shadow-card animate-fade-in" style={{ animationDelay: '250ms' }}>
+            <Card className="shadow-card animate-fade-in" style={{ animationDelay: '350ms' }}>
                 <CardHeader className="pb-4">
                     <CardTitle className="text-lg font-semibold text-foreground">Additional Notes</CardTitle>
                 </CardHeader>

@@ -8,6 +8,9 @@ export interface ContractData {
     serviceAgreement: string;
     termsAndConditions: string;
     paymentTerms: string;
+    ownershipIP: string;
+    termination: string;
+    governingLaw: string;
     currency: string;
     totalAmount: number;
     notes: string;

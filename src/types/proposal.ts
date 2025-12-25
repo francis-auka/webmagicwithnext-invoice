@@ -17,9 +17,11 @@ export interface ProposalData {
     issueDate: Date;
     validUntil: Date;
     client: ClientDetails;
+    projectOverview: string;
     scopeItems: ProposalScopeItem[];
+    excludedWork: string;
     timeline: string;
-    costItems: ProposalCostItem[];
+    generalRequirements: string;
     currency: string;
     notes: string;
 }

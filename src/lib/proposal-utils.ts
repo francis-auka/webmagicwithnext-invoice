@@ -20,6 +20,7 @@ export const createEmptyProposal = (): ProposalData => ({
         company: '',
         address: '',
     },
+    projectOverview: '',
     scopeItems: [
         {
             id: crypto.randomUUID(),
@@ -27,14 +28,9 @@ export const createEmptyProposal = (): ProposalData => ({
             deliverable: '',
         },
     ],
+    excludedWork: '',
     timeline: '',
-    costItems: [
-        {
-            id: crypto.randomUUID(),
-            description: '',
-            amount: 0,
-        },
-    ],
+    generalRequirements: '',
     currency: 'KES',
     notes: '',
 });
