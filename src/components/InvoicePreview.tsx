@@ -125,8 +125,9 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice }) => {
         <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4">Payment Information</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <p className="text-xs text-muted-foreground uppercase font-semibold">Equity Bank Paybill</p>
+            <p className="text-xs text-muted-foreground uppercase font-semibold">Equity Bank</p>
             <div className="text-sm">
+              <p className="font-bold text-foreground">Business Number: 247247</p>
               <p className="font-bold text-foreground">Account: 1170184512866</p>
               <p className="text-muted-foreground">Name: Francis Auka</p>
             </div>

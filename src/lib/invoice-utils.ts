@@ -83,6 +83,7 @@ export const createEmptyInvoice = (): InvoiceData => ({
   discountPercent: 0,
   currency: 'KES',
   notes: `PAYMENT INFORMATION:
+Equity Business Number: 247247
 Equity Paybill Account: 1170184512866
 Mpesa Number: 0795544180
 Name: Francis Auka`,

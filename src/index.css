@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -130,6 +130,10 @@
 
   .invoice-print {
     @apply bg-card text-card-foreground;
+  }
+
+  .font-signature {
+    font-family: 'Dancing Script', cursive;
   }
 }
 

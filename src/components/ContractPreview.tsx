@@ -108,14 +108,18 @@ export const ContractPreview: React.FC<ContractPreviewProps> = ({ contract }) =>
             <div className="mt-12 pt-12 border-t border-border">
                 <div className="grid grid-cols-2 gap-12">
                     <div className="space-y-8">
-                        <div className="border-b border-foreground h-12"></div>
+                        <div className="border-b border-foreground h-12 flex items-end pb-1">
+                            <span className="font-signature text-2xl text-primary/80">{contract.client.name || 'Client Name'}</span>
+                        </div>
                         <div className="text-xs">
                             <p className="font-bold uppercase">Client Signature</p>
                             <p className="text-muted-foreground mt-1">Date: ________________</p>
                         </div>
                     </div>
                     <div className="space-y-8">
-                        <div className="border-b border-foreground h-12"></div>
+                        <div className="border-b border-foreground h-12 flex items-end pb-1">
+                            <span className="font-signature text-2xl text-primary/80">Francis Auka</span>
+                        </div>
                         <div className="text-xs">
                             <p className="font-bold uppercase">Provider Signature</p>
                             <p className="text-muted-foreground mt-1">Date: ________________</p>

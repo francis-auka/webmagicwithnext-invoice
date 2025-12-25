@@ -26,7 +26,8 @@ Delays caused by late responses, missing assets, or changes requested outside th
 The Service Provider will perform the services with reasonable skill and care but does not guarantee specific business outcomes, including revenue or user growth.`,
     paymentTerms: `The Client agrees to pay the Service Provider the total project fee as outlined in the invoice.
 A deposit may be required before work begins. The remaining balance shall be paid upon completion of the project or according to agreed milestones.
-All payments must be made within the specified invoice due date. Late payments may result in paused work.`,
+All payments must be made within the specified invoice due date. Late payments may result in paused work.
+Payment Details: Equity Business Number: 247247, Account: 1170184512866, Mpesa: 0795544180`,
     ownershipIP: `Upon receipt of full payment, ownership of the final deliverables will be transferred to the Client.
 The Service Provider retains the right to showcase the completed work in portfolios or promotional materials unless otherwise agreed in writing.`,
     termination: `Either party may terminate this Agreement with written notice.
