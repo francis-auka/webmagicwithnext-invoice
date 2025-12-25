@@ -68,7 +68,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ invoice, onChange }) =
           <CardTitle className="text-lg font-semibold text-foreground">Invoice Details</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="invoiceNumber" className="text-sm font-medium">Invoice Number</Label>
               <Input
@@ -98,7 +98,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ invoice, onChange }) =
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label className="text-sm font-medium">Issue Date</Label>
               <Popover>
@@ -159,7 +159,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ invoice, onChange }) =
           <CardTitle className="text-lg font-semibold text-foreground">Bill To</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="clientName" className="text-sm font-medium">Client Name</Label>
               <Input
@@ -179,7 +179,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ invoice, onChange }) =
               />
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="clientEmail" className="text-sm font-medium">Email</Label>
               <Input
@@ -276,7 +276,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ invoice, onChange }) =
           <CardTitle className="text-lg font-semibold text-foreground">Adjustments</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="taxRate" className="text-sm font-medium">Tax Rate (%)</Label>
               <Input

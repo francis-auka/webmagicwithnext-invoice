@@ -37,13 +37,13 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice }) => {
       </div>
 
       {/* Dates & Client */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8">
         <div>
           <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">Bill To</h3>
           <div className="text-sm space-y-1">
             <p className="font-semibold text-foreground">{invoice.client.name || 'Client Name'}</p>
             {invoice.client.company && <p className="text-muted-foreground">{invoice.client.company}</p>}
-            {invoice.client.email && <p className="text-muted-foreground">{invoice.client.email}</p>}
+            {invoice.client.email && <p className="text-muted-foreground break-all">{invoice.client.email}</p>}
             {invoice.client.phone && <p className="text-muted-foreground">{invoice.client.phone}</p>}
             {invoice.client.address && (
               <p className="text-muted-foreground whitespace-pre-line">{invoice.client.address}</p>
@@ -51,8 +51,8 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice }) => {
           </div>
         </div>
         <div className="sm:text-right">
-          <div className="inline-block text-left sm:text-right">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+          <div className="inline-block w-full sm:w-auto text-left sm:text-right">
+            <div className="grid grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-2 text-sm">
               <span className="text-muted-foreground">Issue Date:</span>
               <span className="font-medium">{formatDate(invoice.issueDate)}</span>
               <span className="text-muted-foreground">Due Date:</span>
@@ -63,30 +63,32 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice }) => {
       </div>
 
       {/* Line Items Table */}
-      <div className="mb-8">
-        <div className="bg-primary text-primary-foreground rounded-t-lg px-6 py-4">
-          <div className="flex justify-between items-center text-xs font-semibold uppercase tracking-wide">
-            <div className="flex-1 min-w-0">Description</div>
-            <div className="w-32 text-right shrink-0">Rate</div>
-            <div className="w-32 text-right shrink-0">Amount</div>
-          </div>
-        </div>
-        <div className="border border-t-0 border-border rounded-b-lg divide-y divide-border">
-          {invoice.lineItems.map((item, index) => (
-            <div
-              key={item.id}
-              className={`flex justify-between items-center px-6 py-5 text-sm ${index % 2 === 1 ? 'bg-muted/30' : ''
-                }`}
-            >
-              <div className="flex-1 min-w-0 font-medium pr-4 break-words">{item.description || 'Service'}</div>
-              <div className="w-32 text-right text-muted-foreground shrink-0">
-                {formatCurrency(item.rate, invoice.currency)}
-              </div>
-              <div className="w-32 text-right font-medium shrink-0">
-                {formatCurrency(item.rate, invoice.currency)}
-              </div>
+      <div className="mb-8 overflow-x-auto -mx-6 sm:mx-0">
+        <div className="min-w-[600px] px-6 sm:px-0">
+          <div className="bg-primary text-primary-foreground rounded-t-lg px-6 py-4">
+            <div className="flex justify-between items-center text-xs font-semibold uppercase tracking-wide">
+              <div className="flex-1 min-w-0">Description</div>
+              <div className="w-32 text-right shrink-0">Rate</div>
+              <div className="w-32 text-right shrink-0">Amount</div>
             </div>
-          ))}
+          </div>
+          <div className="border border-t-0 border-border rounded-b-lg divide-y divide-border">
+            {invoice.lineItems.map((item, index) => (
+              <div
+                key={item.id}
+                className={`flex justify-between items-center px-6 py-5 text-sm ${index % 2 === 1 ? 'bg-muted/30' : ''
+                  }`}
+              >
+                <div className="flex-1 min-w-0 font-medium pr-4 break-words">{item.description || 'Service'}</div>
+                <div className="w-32 text-right text-muted-foreground shrink-0">
+                  {formatCurrency(item.rate, invoice.currency)}
+                </div>
+                <div className="w-32 text-right font-medium shrink-0">
+                  {formatCurrency(item.rate, invoice.currency)}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
