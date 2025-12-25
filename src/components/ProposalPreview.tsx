@@ -109,9 +109,8 @@ export const ProposalPreview: React.FC<ProposalPreviewProps> = ({ proposal }) =>
 
             {/* Footer */}
             <div className="mt-8 pt-4 border-t border-border text-center">
-                <p className="text-xs text-muted-foreground">
-                    Thank you for considering our proposal! • webmagicwithnext.com
-                </p>
+                Thank you for considering our proposal! • webmagicwithnext.vercel.app
+
             </div>
         </div>
     );

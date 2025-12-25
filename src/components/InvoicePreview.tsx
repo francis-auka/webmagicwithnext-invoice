@@ -156,9 +156,8 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice }) => {
 
       {/* Footer */}
       <div className="mt-8 pt-4 border-t border-border text-center">
-        <p className="text-xs text-muted-foreground">
-          Thank you for your business! • webmagicwithnext.com
-        </p>
+        Thank you for your business! • webmagicwithnext.vercel.app
+
       </div>
     </div>
   );

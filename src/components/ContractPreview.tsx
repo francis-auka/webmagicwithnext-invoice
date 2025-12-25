@@ -130,9 +130,8 @@ export const ContractPreview: React.FC<ContractPreviewProps> = ({ contract }) =>
 
             {/* Footer */}
             <div className="mt-8 pt-4 border-t border-border text-center">
-                <p className="text-xs text-muted-foreground">
-                    This document is a legally binding agreement. • webmagicwithnext.com
-                </p>
+                This document is a legally binding agreement. • webmagicwithnext.vercel.app
+
             </div>
         </div>
     );
