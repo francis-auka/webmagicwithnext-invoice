@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { FilePlus, FileText, Briefcase, ShieldCheck } from 'lucide-react';
+import { FilePlus, FileText, Briefcase, ShieldCheck, ClipboardList } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '@/assets/logo.png';
 
@@ -14,12 +14,14 @@ export const InvoiceHeader: React.FC<InvoiceHeaderProps> = ({ onNewInvoice }) =>
   const getPageTitle = () => {
     if (location.pathname === '/proposals') return 'Proposal Generator';
     if (location.pathname === '/contracts') return 'Contract Generator';
+    if (location.pathname === '/audits') return 'Audit Report Generator';
     return 'Invoice Generator';
   };
 
   const getNewButtonText = () => {
     if (location.pathname === '/proposals') return 'New Proposal';
     if (location.pathname === '/contracts') return 'New Contract';
+    if (location.pathname === '/audits') return 'New Audit';
     return 'New Invoice';
   };
 
@@ -63,6 +65,12 @@ export const InvoiceHeader: React.FC<InvoiceHeaderProps> = ({ onNewInvoice }) =>
                   Contracts
                 </Button>
               </Link>
+              <Link to="/audits">
+                <Button variant={isActive('/audits') ? 'secondary' : 'ghost'} size="sm" className="gap-2">
+                  <ClipboardList className="h-4 w-4" />
+                  Audits
+                </Button>
+              </Link>
             </nav>
           </div>
 
@@ -91,6 +99,11 @@ export const InvoiceHeader: React.FC<InvoiceHeaderProps> = ({ onNewInvoice }) =>
           <Link to="/contracts">
             <Button variant={isActive('/contracts') ? 'secondary' : 'ghost'} size="sm" className="px-2">
               <ShieldCheck className="h-4 w-4" />
+            </Button>
+          </Link>
+          <Link to="/audits">
+            <Button variant={isActive('/audits') ? 'secondary' : 'ghost'} size="sm" className="px-2">
+              <ClipboardList className="h-4 w-4" />
             </Button>
           </Link>
           <Button variant="outline" size="sm" onClick={onNewInvoice} className="px-2">
